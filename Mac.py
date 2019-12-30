@@ -1,4 +1,4 @@
-
+#!/usr/bin/python
 
 import locale
 from dialog import Dialog
@@ -25,19 +25,32 @@ import shlex
 from sys import exit
 import base64
 import getpass
-import fileinput
-import os
-import sys
-import fileinput
-from dialog import Dialog
+
+
+
+
+menu = raw_input ("Assigning Mac address:\n"
+
+    "wired_pdq_mac() 1\n"
+    "wireles_pdq_mac() 2\n"
+    "Both 3\n")
+
+if menu == str("1"):
+    savinginfile = raw_input ("Wired or Wirless PDQ ")
+   (
+elimf enu == str("2"):
+    print (" wireles_pdq_mac2")
+#elif menu == str("3"):
+ #   print ("Both 3")
 
 
 def wired_pdq_mac():
     textToSearch = 'PAX Computer Technology'
-    terminal_rows, terminal_cols = d.maxsize()
-    code, pdq_mac_address = d.inputbox("Enter the Mac address for Wired PDQ.",
-        height=max(terminal_rows - 10, 15),
-        width=max(terminal_cols - 16, 54))
+   # terminal_rows, terminal_cols = d.maxsize()
+    pdq_mac_address=$(sudo arp-scan -l | grep '00\|54\|88' | awk '{ print $2 }');
+    #code, pdq_mac_address = d.inputbox("Enter the Mac address for Wired PDQ.",
+    #    height=max(terminal_rows - 10, 15),
+     #   width=max(terminal_cols - 16, 54))
     if re.match("[0-9a-f]{2}([-:]?)[0-9a-f]{2}(\\1[0-9a-f]{2}){4}$", pdq_mac_address.lower()):
         create_fusion_descovery_script()
         with open('/home/client/fusion-linux/fusion_discover.py', 'r') as file :
@@ -52,11 +65,13 @@ def wired_pdq_mac():
 
 def wireles_pdq_mac():
     create_fusion_descovery_script()
+
     textToSearch = 'Redpine Signals, Inc.'
-    terminal_rows, terminal_cols = d.maxsize()
-    code, pdq_mac_address = d.inputbox("Enter the Mac address for Wireless PDQ.",
-        height=max(terminal_rows - 10, 15),
-        width=max(terminal_cols - 16, 54))
+#    terminal_rows, terminal_cols = d.maxsize()
+#    code, pdq_mac_address = d.inputbox("Enter the Mac address for Wireless PDQ.",
+#       height=max(terminal_rows - 10, 15),
+#      width=max(terminal_cols - 16, 54))
+    pdq_mac_address=$(sudo arp-scan -l | grep '00\|54\|88' | awk '{ print $2 }')
     if re.match("[0-9a-f]{2}([-:]?)[0-9a-f]{2}(\\1[0-9a-f]{2}){4}$", pdq_mac_address.lower()):
         with open('/home/client/fusion-linux/fusion_discover.py', 'r') as file :
             filedata = file.read()
@@ -68,6 +83,6 @@ def wireles_pdq_mac():
     else:
         print("invalid Mac Address")
 
-d = Dialog(dialog="dialog")
 
-ps aux | grep optmany_service | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'
+#d =Dialog(dialog="dialog")
+
